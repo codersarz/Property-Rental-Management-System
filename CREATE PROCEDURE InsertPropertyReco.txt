@@ -1,0 +1,32 @@
+CREATE OR REPLACE PROCEDURE InsertPropertyRecord (
+  propertyID IN INTEGER,
+  ownerID IN NUMBER,
+  PINCode IN NUMBER,
+  availableFrom IN DATE,
+  availableTill IN DATE,
+  rentPerMonth IN INTEGER,
+  hikeInRent IN DECIMAL,
+  totalArea IN INTEGER,
+  plinthArea IN INTEGER,
+  numFloors IN INTEGER,
+  yearOfConstruction IN DATE,
+  locality IN VARCHAR,
+  address IN VARCHAR,
+  propType IN VARCHAR,
+  rType IN VARCHAR,
+  numBedrooms IN INTEGER,
+  cType IN VARCHAR
+)
+AS
+BEGIN
+  INSERT INTO property
+  VALUES (propertyID, ownerID, PINCode, availableFrom, availableTill, rentPerMonth, hikeInRent, totalArea, plinthArea, numFloors, yearOfConstruction, locality, address, propType, rType, numBedrooms, cType);
+  
+  COMMIT;
+END;
+/
+
+
+BEGIN
+  InsertPropertyRecord(4, 123456789012, 560100, DATE '2023-05-01', DATE '2024-04-30', 17000, 0.05, 1400, 800, 3, DATE '2010-03-03', 'Captain DPC Marg', 'House No. 1, Captain DPC Marg, Anasagar Link Road', 'Commercial', 1, 4, 0);
+END;

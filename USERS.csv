@@ -1,0 +1,9 @@
+ADHARID,NAME,AGE,DOORNO,STREET,CITY,STATE,PINCODE,LOGINID,PASSWORD,USERTYPE
+123456789012,Rishabh,24,A-101,Main Street,New York,New York,10001,Rishab03,goyal82,Owner
+234567890123,Kanishk,25,B-202,Second Avenue,Chicago,Illinois,60601,Kanishk69,letmesleep,Tenant
+345678901234,Aditya,28,C-303,Third Street,Los Angeles,California,90001,guppy45,marvel,Manager
+456789012345,Yash,27,D-404,Fourth Avenue,Houston,Texas,77001,yashgeez,gupta99,DBA
+678901234567,Saransh,30,A-101,Main Road,Bangalore,Karnataka,560001,Sarz333,sk\2422457,Owner
+789012345678,Om Bhuva,25,B-202,First Cross,Mumbai,Maharashtra,400001,spongebob123,sandy,Tenant
+890123456789,Amal,35,D-404,Third Street,Chennai,Tamil Nadu,600001,octopussy,tenticles,Tenant
+567890123456,Vanshika,50,E-505,Fourth Lane,Hyderabad,Telangana,500001,elfbar,onlyvans,Owner

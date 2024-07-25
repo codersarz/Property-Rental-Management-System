@@ -1,0 +1,73 @@
+CREATE TABLE Users (
+  adharID NUMBER(12) PRIMARY KEY,
+  Name VARCHAR(50) NOT NULL,
+  Age INT NOT NULL,
+  DoorNo VARCHAR(10),
+  Street VARCHAR(50) NOT NULL,
+  City VARCHAR(50) NOT NULL,
+  State VARCHAR(50) NOT NULL, 
+  PINCode NUMBER(10) NOT NULL,
+  LoginID VARCHAR(50) NOT NULL,
+  Password VARCHAR(50) NOT NULL,
+  UserType VARCHAR(20) NOT NULL CHECK (UserType IN ('Owner', 'Tenant', 'Manager', 'DBA'))
+);
+
+CREATE TABLE contacts (
+  adharID NUMBER(12),
+  phoneNo NUMBER(10),
+  FOREIGN KEY (adharID) REFERENCES Users (adharID),
+  PRIMARY KEY (adharID, phoneNo)
+);
+
+CREATE TABLE roles (
+  roleName VARCHAR(20) PRIMARY KEY,
+  canAlterUserTable CHAR(1),
+  canAlterPropTable CHAR(1)
+);
+
+CREATE TABLE property (
+  propertyID INTEGER PRIMARY KEY,
+  ownerID NUMBER(12) NOT NULL,
+  PINCode NUMBER(10) NOT NULL,
+  availableFrom DATE,
+  availableTill DATE,
+  rentPerMonth INTEGER,
+  hikeInRent DECIMAL(4,2),
+  totalArea INTEGER NOT NULL,
+  plinthArea INTEGER NOT NULL,
+  numFloors INTEGER,
+  yearOfConstruction DATE NOT NULL,
+  locality VARCHAR(50),
+  address VARCHAR(100),
+  propType VARCHAR(12) CHECK (propType IN ('Residential', 'Commercial')),
+  rType VARCHAR(10),
+  numBedrooms INTEGER,
+  cType VARCHAR(10),
+  FOREIGN KEY (ownerID) REFERENCES Users (adharID)
+);
+
+CREATE TABLE rental (
+  rentalID INTEGER PRIMARY KEY,
+  propertyID INTEGER NOT NULL,
+  tenantID NUMBER(12) NOT NULL,
+  startDate DATE NOT NULL,
+  endDate DATE,
+  rentPerMonth INTEGER NOT NULL,
+  hikeInRent DECIMAL(4,2),
+  agencyCommission DECIMAL(4,2),
+  FOREIGN KEY (propertyID) REFERENCES property (propertyID),
+  FOREIGN KEY (tenantID) REFERENCES Users (adharID)
+);
+
+CREATE TABLE property_rental_history (
+  propertyID INTEGER NOT NULL,
+  tenantID NUMBER(12) NOT NULL,
+  startDate DATE NOT NULL,
+  endDate DATE,
+  rentPerMonth INTEGER NOT NULL,
+  hikeInRent DECIMAL(4,2),
+  agencyCommission DECIMAL(4,2),
+  PRIMARY KEY (propertyID, startDate),
+  FOREIGN KEY (propertyID) REFERENCES property (propertyID),
+  FOREIGN KEY (tenantID) REFERENCES Users (adharID)
+);
